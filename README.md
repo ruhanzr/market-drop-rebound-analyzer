@@ -1110,6 +1110,6 @@ The bootstrap confidence interval test strengthened the conclusion around QQQ. Q
 
 At this stage, the project is not claiming that there is a finished trading strategy. The main result is that the analysis found historical setups with positive edge vs benchmark, ranked those setups while accounting for average downside, tested whether the strongest setups were stable across time, tested whether they survived transaction costs, and then checked the cumulative return path for selected repeated setups. The results suggest that the drop-rebound effect exists historically, but it appears to be regime-dependent rather than perfectly consistent. The strongest selected setup so far is QQQ -2.5% 5D because it combined strong final cumulative return, the least severe drawdown among the selected repeated setups, and the only bootstrap confidence interval that stayed above zero.
 
-I also refactored the project into a cleaner multi-file structure and verified the refactored outputs against the original script outputs.
+I also refactored the project into a cleaner multi-file structure and verified the refactored outputs against the original script outputs. I have included my original script before refactoring in the archive folder.
 
 None of the top 10 setups selected from 2010-2019 passed the out-of-sample rule in 2020-2024. XLV -2.5% 5D had the best test-period edge, but its win rate was below the passing threshold. This suggests that the rebound effect weakened in the later period and was more regime-dependent than the earlier results alone suggested.
