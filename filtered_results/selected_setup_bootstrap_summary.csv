@@ -1,0 +1,4 @@
+Ticker,Drop threshold (%),Holding period,Number of trades,Average trade return after costs (%),Bootstrap 95% lower bound (%),Bootstrap 95% upper bound (%)
+QQQ,-2.5,5,128,0.78,0.05,1.48
+SPY,-2.0,5,126,0.68,-0.08,1.45
+XLF,-2.5,5,125,0.17,-0.82,1.15

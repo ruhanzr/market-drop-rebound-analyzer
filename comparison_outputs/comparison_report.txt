@@ -1,0 +1,30 @@
+MATCH: combined_summary_2010-2014.csv
+MATCH: combined_summary_2015-2019.csv
+MATCH: combined_summary_2020-2024.csv
+MISMATCH: long_format_summary_2010-2014.csv
+  Reason: values differ (DataFrame.iloc[:, 13] (column name="Risk-adjusted score") are different)
+MATCH: long_format_summary_2015-2019.csv
+MATCH: long_format_summary_2020-2024.csv
+MATCH: ranked_setups_2010-2014.csv
+MATCH: ranked_setups_2015-2019.csv
+MATCH: ranked_setups_2020-2024.csv
+MISMATCH: transaction_cost_sensitivity_2010-2014.csv
+  Reason: values differ (DataFrame.iloc[:, 14] (column name="Risk-adjusted score after costs") are different)
+MISMATCH: transaction_cost_sensitivity_2015-2019.csv
+  Reason: values differ (DataFrame.iloc[:, 13] (column name="Average losing trade after costs (%)") are different)
+MATCH: transaction_cost_sensitivity_2020-2024.csv
+MISMATCH: ranked_after_cost_sensitivity_2010-2014.csv
+  Reason: values differ (DataFrame.iloc[:, 14] (column name="Risk-adjusted score after costs") are different)
+MATCH: ranked_after_cost_sensitivity_2015-2019.csv
+MATCH: ranked_after_cost_sensitivity_2020-2024.csv
+MATCH: transaction_cost_survival_summary.csv
+MISMATCH: selected_setup_drawdowns.csv
+  Reason: shapes differ (original (380, 11), refactored (379, 11))
+MATCH: selected_setup_drawdown_summary.csv
+MISMATCH: selected_setup_bootstrap_summary.csv
+  Reason: values differ (DataFrame.iloc[:, 5] (column name="Bootstrap 95% lower bound (%)") are different)
+
+Comparison complete.
+Files matched: 13
+Files mismatched: 6
+Files missing: 0
