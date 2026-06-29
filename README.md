@@ -819,33 +819,49 @@ This makes Version 1 a completed rules-based research/backtesting project, while
 
 ---
 
-## Possible Future Extensions
+## Expanded ETF Universe Test
 
-### Broader ETF Robustness Test
+After completing the original Version 1 analysis, I added a broader ETF robustness test to see whether the rebound effect became stronger or more stable when tested across a larger universe.
 
-One possible next step is to test a broader ETF universe, including more sector, industry, bond, commodity, and thematic ETFs.
-
-Possible additions:
+The original core universe contained 8 ETFs:
 
 ```text
-XLI
-XLY
-XLP
-XLU
-XLB
-XLRE
-SMH
-SOXX
-IGV
-TLT
-HYG
-LQD
-GLD
-SLV
-USO
+SPY, QQQ, IWM, DIA, XLK, XLF, XLE, XLV
 ```
 
-The goal would be to keep the same methodology and test whether the framework finds stronger or more stable setups in a broader universe.
+The expanded universe added 15 more ETFs across sectors, semiconductors, software, bonds, and commodities:
+
+```text
+XLI, XLY, XLP, XLU, XLB, XLRE, SMH, SOXX, IGV, TLT, HYG, LQD, GLD, SLV, USO
+```
+
+The goal of this extension was not just to add more tickers, but to test whether the same drop-rebound framework found stronger or more stable setups outside the original ETF group.
+
+The expanded additions produced more total passing setups because there were more ETFs tested, but the original core universe remained stronger on average.
+
+```text
+Core universe:
+Average edge vs benchmark: 0.33%
+Average win rate: 58.63%
+Best setup: QQQ | -2.5% threshold | 5-day hold
+Best risk-adjusted score: 1.525
+
+Expanded additions:
+Average edge vs benchmark: 0.23%
+Average win rate: 56.56%
+Best setup: XLY | -2.5% threshold | 5-day hold
+Best risk-adjusted score: 1.013
+```
+
+The broader test found some strong individual raw-edge setups, especially XLY -2.5% 5D, but the original core ETFs still performed better on average and on a risk-adjusted basis.
+
+When grouped by ETF category, broad index and sector ETFs had the strongest overall results. Broad index ETFs had an average edge of 0.34% and an average win rate of 59.12%, while sector ETFs had an average edge of 0.32% and an average win rate of 57.65%.
+
+Software also showed strong average results, but that category only included one ETF, IGV, so the result should not be overinterpreted. Commodities were weak overall, and bonds produced relatively few passing setups.
+
+This extension supports the original conclusion: the drop-rebound effect was historically present, especially in equity-based ETFs, but expanding the universe did not fully solve the stability problem.
+
+## Possible Future Extensions
 
 ---
 

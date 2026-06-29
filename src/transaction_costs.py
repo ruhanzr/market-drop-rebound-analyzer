@@ -1,5 +1,7 @@
 """Transaction-cost sensitivity functions."""
 
+from config import CORE_TICKERS, ETF_CATEGORIES
+
 
 def calculate_transaction_cost_rows(
     ticker,
@@ -39,6 +41,8 @@ def calculate_transaction_cost_rows(
                     "Period": f"{start_year}-{end_year}",
                     "Transaction cost (%)": round(transaction_cost * 100, 2),
                     "Ticker": ticker,
+                    "Category": ETF_CATEGORIES[ticker],
+                    "Universe": "Core" if ticker in CORE_TICKERS else "Expanded Addition",
                     "Drop threshold (%)": round(threshold * 100, 1),
                     "Holding period": days,
                     "Number of big drop days": len(big_drop_days),

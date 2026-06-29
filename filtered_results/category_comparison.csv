@@ -1,0 +1,7 @@
+Group,Number_of_ETFs,Number_of_Setups,Number_of_Passing_Setups,Average_Edge_vs_Benchmark,Average_Win_Rate,Best_Ticker,Best_Drop_Threshold,Best_Holding_Period,Best_Edge_vs_Benchmark,Best_Risk_Adjusted_Score
+Sector,10,450,167,0.32,57.65,XLK,-2.5,5,1.5,1.042
+Broad Index,4,180,86,0.34,59.12,QQQ,-2.5,5,1.58,1.525
+Semiconductors,2,90,42,0.14,54.78,SMH,-3.0,5,1.18,0.711
+Software,1,45,33,0.35,59.13,IGV,-3.0,5,1.71,0.497
+Commodities,3,135,29,-0.01,53.2,SLV,-2.5,1,0.37,0.402
+Bonds,3,135,9,0.34,59.43,HYG,-1.0,5,0.71,0.622

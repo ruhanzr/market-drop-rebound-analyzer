@@ -1,7 +1,40 @@
 """Project settings for the ETF rebound analysis."""
 
-# ETFs tested by the analysis.
-TICKERS = ["SPY", "QQQ", "IWM", "DIA", "XLK", "XLF", "XLE", "XLV"]
+# ETFs tested by the analysis, grouped by universe segment.
+ETF_CATEGORIES = {
+    "SPY": "Broad Index",
+    "QQQ": "Broad Index",
+    "IWM": "Broad Index",
+    "DIA": "Broad Index",
+
+    "XLK": "Sector",
+    "XLF": "Sector",
+    "XLE": "Sector",
+    "XLV": "Sector",
+    "XLI": "Sector",
+    "XLY": "Sector",
+    "XLP": "Sector",
+    "XLU": "Sector",
+    "XLB": "Sector",
+    "XLRE": "Sector",
+
+    "SMH": "Semiconductors",
+    "SOXX": "Semiconductors",
+    "IGV": "Software",
+
+    "TLT": "Bonds",
+    "HYG": "Bonds",
+    "LQD": "Bonds",
+
+    "GLD": "Commodities",
+    "SLV": "Commodities",
+    "USO": "Commodities",
+}
+
+TICKERS = list(ETF_CATEGORIES.keys())
+
+# Original Version 1 universe. All other tickers are expanded additions.
+CORE_TICKERS = ["SPY", "QQQ", "IWM", "DIA", "XLK", "XLF", "XLE", "XLV"]
 
 # Daily return cutoffs that define a selloff day.
 DROP_THRESHOLDS = [-0.01, -0.015, -0.02, -0.025, -0.03]

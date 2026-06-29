@@ -1,11 +1,11 @@
-Ticker,Drop threshold (%),Holding period,Training number of big drop days,Training average return (%),Training edge vs benchmark (%),Training win rate (%),Training risk-adjusted score,Test number of big drop days,Test average return (%),Test edge vs benchmark (%),Test win rate (%),Test risk-adjusted score,Passed out-of-sample test
-QQQ,-3.0,5,34,1.99,1.64,76.47,1.545,42,-0.22,-0.64,52.38,-0.153,No
-XLK,-3.0,5,30,2.34,2.01,83.33,1.094,44,-0.31,-0.76,43.18,-0.193,No
-XLF,-3.0,5,44,1.92,1.67,65.91,0.988,32,-1.85,-2.13,34.38,-0.337,No
-XLV,-2.5,5,33,1.84,1.55,81.82,0.91,25,0.76,0.58,52.0,0.148,No
-DIA,-2.5,3,28,1.31,1.15,60.71,0.907,31,-0.23,-0.37,45.16,-0.092,No
-XLK,-3.0,3,30,1.57,1.37,70.0,0.872,44,-0.22,-0.49,50.0,-0.136,No
-SPY,-2.5,5,35,2.42,2.15,85.71,0.836,37,-0.29,-0.6,48.65,-0.124,No
-XLK,-2.5,5,50,1.74,1.4,72.0,0.816,74,0.3,-0.16,51.35,-0.043,No
-XLV,-2.5,3,33,1.18,1.01,66.67,0.813,25,0.05,-0.06,64.0,-0.011,No
-QQQ,-2.5,5,59,1.69,1.34,71.19,0.786,69,0.18,-0.24,56.52,-0.059,No
+Ticker,Category,Universe,Drop threshold (%),Holding period,Training number of big drop days,Training average return (%),Training edge vs benchmark (%),Training win rate (%),Training risk-adjusted score,Test number of big drop days,Test average return (%),Test edge vs benchmark (%),Test win rate (%),Test risk-adjusted score,Passed out-of-sample test
+QQQ,Broad Index,Core,-3.0,5,34,1.99,1.64,76.47,1.545,42,-0.22,-0.64,52.38,-0.153,No
+XLK,Sector,Core,-3.0,5,30,2.34,2.01,83.33,1.094,44,-0.31,-0.76,43.18,-0.193,No
+XLY,Sector,Expanded Addition,-3.0,5,26,2.2,1.86,76.92,1.025,44,-0.54,-0.86,43.18,-0.19,No
+XLF,Sector,Core,-3.0,5,44,1.92,1.67,65.91,0.988,32,-1.85,-2.13,34.38,-0.337,No
+XLV,Sector,Core,-2.5,5,33,1.84,1.55,81.82,0.91,25,0.76,0.58,52.0,0.148,No
+DIA,Broad Index,Core,-2.5,3,28,1.31,1.15,60.71,0.907,31,-0.23,-0.37,45.16,-0.092,No
+XLK,Sector,Core,-3.0,3,30,1.57,1.37,70.0,0.872,44,-0.22,-0.49,50.0,-0.136,No
+TLT,Bonds,Expanded Addition,-2.0,3,30,0.89,0.79,56.67,0.861,41,0.42,0.49,56.1,0.272,Yes
+SPY,Broad Index,Core,-2.5,5,35,2.42,2.15,85.71,0.836,37,-0.29,-0.6,48.65,-0.124,No
+XLY,Sector,Expanded Addition,-2.5,5,49,2.05,1.71,75.51,0.833,65,-0.23,-0.55,41.54,-0.146,No

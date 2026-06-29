@@ -2,6 +2,8 @@
 
 import pandas as pd
 
+from config import CORE_TICKERS, ETF_CATEGORIES
+
 
 def analyze_selected_setup(ticker, threshold, holding_period, data, transaction_cost):
     """Create event-level drawdown rows for one selected setup."""
@@ -15,6 +17,8 @@ def analyze_selected_setup(ticker, threshold, holding_period, data, transaction_
     setup_trades = setup_trades.reset_index()
     setup_trades = setup_trades.rename(columns={"index": "Date"})
     setup_trades["Ticker"] = ticker
+    setup_trades["Category"] = ETF_CATEGORIES[ticker]
+    setup_trades["Universe"] = "Core" if ticker in CORE_TICKERS else "Expanded Addition"
     setup_trades["Drop threshold (%)"] = threshold * 100
     setup_trades["Holding period"] = holding_period
 
@@ -34,6 +38,8 @@ def analyze_selected_setup(ticker, threshold, holding_period, data, transaction_
         [
             "Date",
             "Ticker",
+            "Category",
+            "Universe",
             "Drop threshold (%)",
             "Holding period",
             "Daily_Return",
@@ -64,6 +70,8 @@ def summarize_drawdowns(drawdown_summary):
         drawdown_result_rows.append(
             {
                 "Ticker": ticker,
+                "Category": ETF_CATEGORIES[ticker],
+                "Universe": "Core" if ticker in CORE_TICKERS else "Expanded Addition",
                 "Drop threshold (%)": threshold,
                 "Holding period": holding_period,
                 "Number of trades": len(group),

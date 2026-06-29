@@ -1,21 +1,17 @@
-# Python cache files
-__pycache__/
-*.py[cod]
-*$py.class
-
 # Virtual environments
 .venv/
 venv/
-env/
 
-# Generated project outputs
+# Python cache files
+__pycache__/
+*.pyc
+
+# Local comparison artifacts
+comparison_outputs/
+comparison_runs/
+
+# Nested local copy, if present
+market-prediction/
+# Generated analysis outputs
 results/
 
-# Environment / secrets
-.env
-
-# OS/editor files
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/

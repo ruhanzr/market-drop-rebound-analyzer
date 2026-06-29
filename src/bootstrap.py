@@ -3,6 +3,8 @@
 import numpy as np
 import pandas as pd
 
+from config import CORE_TICKERS, ETF_CATEGORIES
+
 
 def bootstrap_average_return(trade_returns, num_simulations=10000):
     """Estimate a confidence interval for average return by resampling trades.
@@ -39,6 +41,8 @@ def create_bootstrap_summary(drawdown_summary):
         bootstrap_rows.append(
             {
                 "Ticker": ticker,
+                "Category": ETF_CATEGORIES[ticker],
+                "Universe": "Core" if ticker in CORE_TICKERS else "Expanded Addition",
                 "Drop threshold (%)": threshold,
                 "Holding period": holding_period,
                 "Number of trades": len(trade_returns),

@@ -5,6 +5,8 @@ from pathlib import Path
 import pandas as pd
 import yfinance as yf
 
+from config import CORE_TICKERS, ETF_CATEGORIES
+
 
 RESULTS_DIR = Path("results")
 
@@ -65,45 +67,64 @@ def threshold_label(threshold):
     return f"{abs(threshold) * 100:.1f}".replace(".", "p")
 
 
-def create_ticker_summary(threshold, big_drop_count, metrics, holding_periods):
+def create_ticker_summary(ticker, threshold, big_drop_count, metrics, holding_periods):
     """Build the small Metric/Value summary saved for each ticker and threshold."""
+    category = ETF_CATEGORIES[ticker]
+    universe = "Core" if ticker in CORE_TICKERS else "Expanded Addition"
+
     summary_rows = [
-        {"Metric": "Drop threshold", "Value": f"{threshold * 100:.1f}%"},
-        {"Metric": "Number of big drop days", "Value": big_drop_count},
+        {"Category": category, "Universe": universe, "Metric": "Drop threshold", "Value": f"{threshold * 100:.1f}%"},
+        {"Category": category, "Universe": universe, "Metric": "Number of big drop days", "Value": big_drop_count},
     ]
 
     for days in holding_periods:
         summary_rows.extend(
             [
                 {
+                    "Category": category,
+                    "Universe": universe,
                     "Metric": f"Average {days}-day return",
                     "Value": f"{metrics[days]['avg_return'] * 100:.2f}%",
                 },
                 {
+                    "Category": category,
+                    "Universe": universe,
                     "Metric": f"Benchmark average {days}-day return",
                     "Value": f"{metrics[days]['benchmark_avg_return'] * 100:.2f}%",
                 },
                 {
+                    "Category": category,
+                    "Universe": universe,
                     "Metric": f"Edge vs benchmark {days}-day return",
                     "Value": f"{metrics[days]['edge_vs_benchmark'] * 100:.2f}%",
                 },
                 {
+                    "Category": category,
+                    "Universe": universe,
                     "Metric": f"{days}-day win rate",
                     "Value": f"{metrics[days]['win_rate'] * 100:.2f}%",
                 },
                 {
+                    "Category": category,
+                    "Universe": universe,
                     "Metric": f"Best {days}-day return",
                     "Value": f"{metrics[days]['best_return'] * 100:.2f}%",
                 },
                 {
+                    "Category": category,
+                    "Universe": universe,
                     "Metric": f"Worst {days}-day return",
                     "Value": f"{metrics[days]['worst_return'] * 100:.2f}%",
                 },
                 {
+                    "Category": category,
+                    "Universe": universe,
                     "Metric": f"Average {days}-day winning trade",
                     "Value": f"{metrics[days]['avg_win'] * 100:.2f}%",
                 },
                 {
+                    "Category": category,
+                    "Universe": universe,
                     "Metric": f"Average {days}-day losing trade",
                     "Value": f"{metrics[days]['avg_loss'] * 100:.2f}%",
                 },
@@ -118,6 +139,8 @@ def create_combined_row(ticker, threshold, big_drop_days, metrics, holding_perio
     combined_row = {
         "Period": f"{start_year}-{end_year}",
         "Ticker": ticker,
+        "Category": ETF_CATEGORIES[ticker],
+        "Universe": "Core" if ticker in CORE_TICKERS else "Expanded Addition",
         "Drop threshold": f"{threshold * 100:.1f}%",
         "Number of big drop days": len(big_drop_days),
     }
@@ -148,6 +171,8 @@ def create_long_rows(ticker, threshold, big_drop_days, metrics, holding_periods,
             {
                 "Period": f"{start_year}-{end_year}",
                 "Ticker": ticker,
+                "Category": ETF_CATEGORIES[ticker],
+                "Universe": "Core" if ticker in CORE_TICKERS else "Expanded Addition",
                 "Drop threshold (%)": round(threshold * 100, 1),
                 "Holding period": days,
                 "Number of big drop days": len(big_drop_days),
@@ -181,7 +206,7 @@ def analyze_ticker(ticker, threshold, data, holding_periods, start_year, end_yea
     print(f"Analyzing {ticker} at {threshold * 100:.1f}% threshold...")
 
     big_drop_days, metrics = get_big_drop_days_and_metrics(ticker, threshold, data, holding_periods)
-    summary = create_ticker_summary(threshold, len(big_drop_days), metrics, holding_periods)
+    summary = create_ticker_summary(ticker, threshold, len(big_drop_days), metrics, holding_periods)
 
     save_ticker_outputs(ticker, threshold, big_drop_days, summary, start_year, end_year)
 

@@ -23,6 +23,7 @@ from drawdown import analyze_selected_setup, summarize_drawdowns
 from ranking import rank_setups
 from transaction_costs import calculate_transaction_cost_rows, rank_after_cost_sensitivity
 from out_of_sample import run_out_of_sample_test
+from universe_comparison import run_universe_comparison
 
 RESULTS_DIR = Path("results")
 FILTERED_RESULTS_DIR = Path("filtered_results")
@@ -206,6 +207,11 @@ def main():
     )
 
     print("Saved out-of-sample test summary")
+
+    # 12. Compare the original core universe against expanded additions.
+    print("Running expanded universe comparison...")
+    run_universe_comparison(FILTERED_RESULTS_DIR)
+    print("Saved expanded universe comparison summaries")
 
 if __name__ == "__main__":
     main()

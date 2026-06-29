@@ -1,0 +1,3 @@
+Group,Number_of_ETFs,Number_of_Setups,Number_of_Passing_Setups,Average_Edge_vs_Benchmark,Average_Win_Rate,Best_Ticker,Best_Drop_Threshold,Best_Holding_Period,Best_Edge_vs_Benchmark,Best_Risk_Adjusted_Score
+Expanded Addition,15,675,194,0.23,56.56,XLY,-2.5,5,2.04,1.013
+Core,8,360,172,0.33,58.63,QQQ,-2.5,5,1.58,1.525

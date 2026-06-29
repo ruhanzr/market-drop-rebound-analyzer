@@ -1,4 +1,4 @@
-Ticker,Drop threshold (%),Holding period,Number of trades,Final cumulative return (%),Maximum drawdown (%),Average trade return after costs (%),Win rate after costs (%),Best trade after costs (%),Worst trade after costs (%)
-QQQ,-2.5,5,128,140.64,-37.27,0.78,60.94,9.92,-16.3
-SPY,-2.0,5,126,108.34,-49.35,0.68,59.52,17.26,-18.07
-XLF,-2.5,5,125,0.96,-68.22,0.17,52.8,21.13,-23.09
+Ticker,Category,Universe,Drop threshold (%),Holding period,Number of trades,Final cumulative return (%),Maximum drawdown (%),Average trade return after costs (%),Win rate after costs (%),Best trade after costs (%),Worst trade after costs (%)
+QQQ,Broad Index,Core,-2.5,5,128,140.64,-37.27,0.78,60.94,9.92,-16.3
+SPY,Broad Index,Core,-2.0,5,126,108.34,-49.35,0.68,59.52,17.26,-18.07
+XLF,Sector,Core,-2.5,5,125,0.96,-68.22,0.17,52.8,21.13,-23.09

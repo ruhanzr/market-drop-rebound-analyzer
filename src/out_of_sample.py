@@ -3,7 +3,7 @@ import yfinance as yf
 
 from analysis import analyze_ticker
 from ranking import rank_setups
-from config import TICKERS, DROP_THRESHOLDS, HOLDING_PERIODS
+from config import CORE_TICKERS, ETF_CATEGORIES, TICKERS, DROP_THRESHOLDS, HOLDING_PERIODS
 
 def build_period_results(start_date, end_date):
     """
@@ -74,6 +74,8 @@ def match_training_to_test(top_training_setups, test_results):
 
         out_of_sample_rows.append({
             "Ticker": ticker,
+            "Category": ETF_CATEGORIES[ticker],
+            "Universe": "Core" if ticker in CORE_TICKERS else "Expanded Addition",
             "Drop threshold (%)": threshold,
             "Holding period": holding_period,
 
