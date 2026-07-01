@@ -1,4 +1,4 @@
-# Version 2: Machine Learning Rebound Prediction
+﻿# Version 2: Machine Learning Rebound Prediction
 
 This document explains the ML phase of the project, including the event-level dataset, train/test split, baseline models, feature interpretation, probability-threshold analysis, and final ML conclusion.
 
@@ -120,6 +120,61 @@ Random forest
 ```
 
 The majority-class baseline predicted the most common training class for every test event. This was included to check whether the ML models actually added predictive value beyond simply guessing the most common outcome.
+
+### How the Models Were Trained
+
+The ML models were trained with `scikit-learn` pipelines. Each pipeline had two parts:
+
+```text
+1. Preprocessing
+2. Model fitting
+```
+
+The preprocessing step handled numeric and categorical features differently. Numeric features were standardized with `StandardScaler`, which converted each numeric input into a scaled value based on the training data. This matters most for logistic regression because coefficients are easier to estimate when numeric inputs are on similar scales.
+
+Categorical features were converted with one-hot encoding:
+
+```text
+Ticker
+Category
+Universe
+```
+
+One-hot encoding turns categories into separate 0/1 columns. For example, ticker labels such as SPY, QQQ, or XLF become binary indicator features. This lets the models use ETF identity and category without treating them as ordered numbers.
+
+Logistic regression was trained as a binary classification model, not as ordinary linear regression. The model learned one coefficient for each input feature and used those coefficients to estimate the probability that `Target_Positive_5D` equals 1. In plain language, it learned which features pushed the predicted rebound probability higher or lower.
+
+The logistic regression model used:
+
+```text
+LogisticRegression(max_iter=1000, random_state=42)
+```
+
+I did not manually set a learning rate or number of epochs. In this project, scikit-learn handled the optimization internally. The default solver is `lbfgs`, which is an iterative optimizer, but it is not configured like a neural network training loop. Instead of setting epochs and learning rate, the main explicit training limit was:
+
+```text
+max_iter = 1000
+```
+
+This means the optimizer was allowed up to 1,000 iterations to find stable logistic regression coefficients. The model also used scikit-learn's default L2 regularization settings. No hyperparameter tuning was performed.
+
+The decision tree model used:
+
+```text
+DecisionTreeClassifier(random_state=42)
+```
+
+A decision tree does not use gradient descent. It learns by repeatedly splitting the training data into branches based on feature values that improve class separation. The project did not set a maximum tree depth, minimum leaf size, or pruning rule, so scikit-learn's default decision-tree settings were used.
+
+The random forest model used:
+
+```text
+RandomForestClassifier(n_estimators=200, random_state=42)
+```
+
+A random forest is an ensemble of many decision trees. In this project, it trained 200 trees and combined their predictions. Like the decision tree, it did not use gradient descent, epochs, or a learning rate. Each tree learned split rules from the training data, and the forest averaged the trees' predicted probabilities.
+
+The important limitation is that these were baseline models. There was no cross-validation, no grid search, no learning-rate tuning, no neural network training, and no advanced hyperparameter optimization. The purpose was to establish whether simple ML methods could find useful out-of-sample rebound signals before adding more complexity.
 
 The results were saved to:
 
@@ -252,3 +307,4 @@ The ML extension converted the rules-based rebound analysis into an event-level 
 The models did not beat the majority-class baseline, ROC AUC stayed near random, and probability-threshold filtering did not reveal a reliable high-confidence signal. Feature interpretation showed that the models relied mainly on moving-average distance, recent returns, volatility, daily return, and volume change, but those features were not strong enough to produce stable out-of-sample predictive power.
 
 This supports the broader project conclusion: ETF rebound behavior after major selloffs was historically present, but it was regime-dependent and difficult to convert into a stable predictive strategy using simple rules or baseline ML models.
+
